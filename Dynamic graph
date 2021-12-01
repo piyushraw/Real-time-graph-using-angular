@@ -1,0 +1,61 @@
+
+                              HTML file
+                              
+                              
+                 <head>
+         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+
+                </head>
+                  <body>
+    
+             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            <div id="chart" style="height: 250px; width:55%;"> </div>
+
+    
+            <body>
+            
+        
+                                CSS file
+                                  
+                                  
+                             #chart {
+
+                              position: absolute;
+                               margin-left:100px;
+                                      top:0%;
+   
+                                            }
+                                            
+                                            
+                                            JAVASCRIPT FILE
+                                            
+                                            
+                                            
+                                             function getData()   {
+                
+                                               return Math.random();
+                                                    }
+          
+                                           Plotly.plot('chart',[{
+          
+                                             y:[getData()],
+
+                                            type:'line'
+
+                                           }]) ;
+          
+                                          var cnt=0;
+                                     setInterval (function()  {
+          
+                                        Plotly.extendTraces('chart',{y:[[getData()]]},[0]);
+                                       cnt++;
+                                      if(cnt > 200)  {
+                             
+                                         Plotly.relayout('chart', {
+                                                xaxis:  {
+                                          range:[cnt-500,cnt]
+          
+                                            }
+                                       });
+                                           }
+                                     }, 15);
